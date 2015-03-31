@@ -31,9 +31,22 @@ class TestJoin < MiniTest::Unit::TestCase
   end
 
   def test_step
-    @algorithm.step do |clusters|
-      puts clusters.join(", ")
+    steps = [
+      "{b}, {d}, {e}, {f}, {a, c}",
+      "{d}, {e}, {f}, {b, a, c}",
+      "{f}, {b, a, c}, {d, e}",
+      "{f}, {b, a, c, d, e}"
+    ]
+    i = 0
+    @algorithm.run do |cluster|
+      assert_equal steps[i], cluster.join(", ")
+      i += 1
     end
+  end
+
+  def test_run
+    clusters = @algorithm.run
+    assert_equal "{f}, {b, a, c, d, e}", clusters.join(", ")
   end
 
 end
