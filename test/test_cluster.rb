@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-load 'medjool.rb'
+require 'medjool'
 
 require 'point'
 
