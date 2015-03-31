@@ -1,3 +1,5 @@
 require 'medjool/algorithm'
 require 'medjool/cluster'
 require 'medjool/node'
+require 'medjool/singlelinkage/algorithm'
+require 'medjool/singlelinkage/cluster'

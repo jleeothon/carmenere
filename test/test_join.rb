@@ -2,6 +2,8 @@ require 'minitest/autorun'
 
 load 'medjool.rb'
 
+require 'point'
+
 # 8              f
 # 7
 # 6        e
@@ -23,7 +25,7 @@ class TestJoin < MiniTest::Unit::TestCase
       Point.new(:e, 5, 6),
       Point.new(:f, 8, 8)
     ]
-    @algorithm = Algorithm.new 2, @nodes
+    @algorithm = SingleLinkage::Algorithm.new 2, @nodes
   end
 
   def test_matrix_no_recursive

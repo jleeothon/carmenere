@@ -1,44 +1,28 @@
-class Algorithm
+module Clustering
 
-  attr_reader :nodes
+  class Algorithm
 
-  attr_reader :distance_matrix
+    attr_reader :nodes
 
-  def initialize k, nodes
-    @k = k
-    @nodes = Set.new(nodes).freeze
-    @clusters = Set.new(@nodes.map{ |n| Cluster.new(self, [n]) })
-    @clusters.each{ |c| raise "Not a cluster" if not c.is_a? Cluster}
-    @distance_matrix = @nodes.each.with_object({}) do |i, row|
-      row[i] = @nodes.each.with_object({}) do |j, col|
-        col[j] = i.distance(j) if i != j
-      end
-    end
-  end
+    attr_reader :distance_matrix
 
-  # If step is true, then yields a copy of the array of clusters
-  def run
-    (nodes.size - @k).times do
-      a, b = self.closest_clusters
-      @clusters.delete a
-      @clusters.delete b
-      @clusters.add Cluster.new(@algorithm, a + b)
-      yield @clusters.to_a if block_given?
-    end
-    @clusters.to_a
-  end
-
-  def closest_clusters
-    @clusters.reduce(nil) do |m, i|
-      @clusters.reduce(m) do |m, j|
-        d = i.distance j
-        m = if i != j and (m.nil? or m[2] > d)
-          [i, j, d]
-        else
-          m
+    def initialize k, nodes
+      @k = k
+      @nodes = Set.new(nodes).freeze
+      @clusters = Set.new(@nodes.map{ |n| Cluster.new(self, [n]) })
+      @distance_matrix = @nodes.each.with_object({}) do |i, row|
+        row[i] = @nodes.each.with_object({}) do |j, col|
+          col[j] = i.distance(j) if i != j
         end
       end
     end
+
+    # If a block is provided, it should yield each iteration of the clusters,
+    # otherwise, just returns the final state of the space.
+    def run
+      raise NotImplementedError.new
+    end
+
   end
 
 end

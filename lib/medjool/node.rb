@@ -1,50 +1,35 @@
-class Node
+module Clustering
 
-  include Comparable
+  class Node
 
-  attr_reader :name
+    include Comparable
 
-  def initialize name
-    @name = name
-  end
+    attr_reader :name
 
-  def <=> node
-    @name <=> node.name
-  end
+    def initialize name
+      @name = name
+    end
 
-  def hash
-    @name.hash
-  end
+    def <=> node
+      @name <=> node.name
+    end
 
-  def to_s
-    @name
-  end
+    def hash
+      @name.hash
+    end
 
-  def inspect
-    @name
-  end
+    def to_s
+      @name
+    end
 
-  def distance other
-    raise NotImplementedError.new
-  end
+    def inspect
+      @name
+    end
 
-end
+    def distance other
+      raise NotImplementedError.new
+    end
 
-class Point < Node
-  attr_reader :x, :y
-
-  def initialize name, x, y
-    super name
-    @x = x
-    @y = y
-  end
-
-  def distance other
-    (@x - other.x) ** 2 + (@y - other.y) ** 2
-  end
-
-  def to_s
-    super.to_s
   end
 
 end

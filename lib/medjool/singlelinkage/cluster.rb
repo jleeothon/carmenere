@@ -1,13 +1,6 @@
-require 'set'
+module SingleLinkage
 
-module Clustering
-
-  class Cluster < Set
-
-    def initialize algorithm, nodes
-      super nodes
-      @algorithm = algorithm
-    end
+  class Cluster < Clustering::Cluster
 
     # Minimum distance to other cluster
     def distance other
@@ -33,3 +26,4 @@ module Clustering
   end
 
 end
+
