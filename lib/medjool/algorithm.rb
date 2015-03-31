@@ -8,8 +8,8 @@ class Algorithm
     @k = k
     @nodes = Set.new(nodes).freeze
     @clusters = Set.new(@nodes.map{ |n| Cluster.new(self, [n]) })
-    @distance_matrix = @nodes.each.with_object {} do |i, row|
-      row[i] = @nodes.each.with_object {} do |j, col|
+    @distance_matrix = @nodes.each.with_object({}) do |i, row|
+      row[i] = @nodes.each.with_object({}) do |j, col|
         col[j] = i.distance(j) if i != j
       end
     end
@@ -32,8 +32,8 @@ class Algorithm
   end
 
   def closest_clusters
-    @clusters.reduce nil do |m, i|
-      @clusters.reduce m do |m, j|
+    @clusters.reduce(nil) do |m, i|
+      @clusters.reduce(m) do |m, j|
         d = i.distance j
         m = if i != j and (m.nil? or m[2] > d)
           [i, j, d]
