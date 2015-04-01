@@ -28,9 +28,9 @@ class TestJoin < MiniTest::Unit::TestCase
     @algorithm = SingleLinkage::Algorithm.new 2, @nodes
   end
 
-  def test_matrix_no_recursive
-    assert_equal nil, @algorithm.distance_matrix[@nodes[0]][@nodes[0]]
-  end
+  # def test_matrix_no_recursive
+  #   assert_equal nil, @algorithm.distance_matrix[@nodes[0]][@nodes[0]]
+  # end
 
   def test_step
     steps = [

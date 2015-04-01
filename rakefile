@@ -30,7 +30,7 @@ task :test, [:pattern] do |t, args|
     else
         test_files = Rake::FileList.new "test/test_#{args[:pattern]}.rb"
         test_files.each do |test_file|
-            ruby "-I lib - I test #{test_file}"
+            ruby "-I lib -I test #{test_file}"
         end
     end
 end

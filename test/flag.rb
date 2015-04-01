@@ -36,6 +36,7 @@ class Flag < Clustering::Node
   def initialize country, **attributes
     super country
     @attributes = attributes
+    @cache = Hash.new
   end
 
   def distance other

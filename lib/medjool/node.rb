@@ -8,6 +8,7 @@ module Clustering
 
     def initialize name
       @name = name
+      @cache = Hash.new
     end
 
     def <=> node
@@ -29,6 +30,14 @@ module Clustering
     def distance other
       raise NotImplementedError.new
     end
+    
+    def cache_distance other
+      other.cache[self] = @cache[other] = yield
+    end
+
+    protected
+
+    attr_reader :cache
 
   end
 
