@@ -16,7 +16,7 @@ module SingleLinkage
         a, b = self.closest_clusters
         @clusters.delete a
         @clusters.delete b
-        @clusters.add Cluster.new(@algorithm, a + b)
+        @clusters.add Cluster.new(a | b)
         yield @clusters.to_a if block_given?
       end
       @clusters.to_a

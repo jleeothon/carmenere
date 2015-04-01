@@ -4,11 +4,6 @@ module Clustering
 
   class Cluster < Set
 
-    def initialize algorithm, nodes
-      super nodes
-      @algorithm = algorithm
-    end
-
     # Minimum distance to other cluster
     def distance other
       self.reduce(nil) do |m, i|

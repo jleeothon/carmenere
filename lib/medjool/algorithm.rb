@@ -9,7 +9,7 @@ module Clustering
     def initialize k, nodes
       @k = k
       @nodes = Set.new(nodes).freeze
-      @clusters = Set.new(@nodes.map{ |n| Cluster.new(self, [n]) })
+      @clusters = Set.new(@nodes.map{ |n| Cluster.new([n]) })
       @distance_matrix = @nodes.each.with_object({}) do |i, row|
         row[i] = @nodes.each.with_object({}) do |j, col|
           col[j] = i.distance(j) if i != j
