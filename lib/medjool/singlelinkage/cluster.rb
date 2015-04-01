@@ -23,6 +23,10 @@ module SingleLinkage
       self.to_s
     end
 
+    def run
+      raise NotImplementedError.new
+    end
+
   end
 
 end

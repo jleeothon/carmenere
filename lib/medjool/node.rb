@@ -5,10 +5,12 @@ module Clustering
     include Comparable
 
     attr_reader :name
+    attr_reader :attributes
 
-    def initialize name
+    def initialize name, attributes
       @name = name
       @cache = Hash.new
+      @attributes = attributes
     end
 
     def <=> node
@@ -32,7 +34,16 @@ module Clustering
     end
     
     def cache_distance other
-      other.cache[self] = @cache[other] = yield
+      c = @cache[other]
+      if c
+        c
+      else
+        @cache[other] = other.cache[self] = yield
+      end
+    end
+
+    def attr_eql? other
+      return @attributes == other.attributes
     end
 
     protected

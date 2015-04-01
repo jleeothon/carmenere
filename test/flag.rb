@@ -33,22 +33,23 @@ class Flag < Clustering::Node
   # A hash of attributes
   attr_reader :attributes
 
-  def initialize country, **attributes
-    super country
-    @attributes = attributes
+  def initialize country, attributes
+    super country, attributes
     @cache = Hash.new
   end
 
   def distance other
-    Attributes.reduce(0) do |m, (a, v)|
-      selfA = @attributes[a]
-      otherA = other.attributes[a]
-      m + if selfA.is_a? String
-        if selfA == otherA then 0 else v end
-      elsif selfA.is_a? Fixnum
-        (selfA - otherA).abs * v
-      else
-        raise "Attributes not string nor number but #{selfA.class}"
+    self.cache_distance(other) do
+      Attributes.reduce(0) do |m, (a, v)|
+        selfA = @attributes[a]
+        otherA = other.attributes[a]
+        m + if selfA.is_a? String
+          if selfA == otherA then 0 else v end
+        elsif selfA.is_a? Fixnum
+          (selfA - otherA).abs * v
+        else
+          raise "Attributes not string nor number but #{selfA.class}"
+        end
       end
     end
   end
@@ -61,32 +62,8 @@ class Flag < Clustering::Node
         k = Attributes[i][0]
         h[k] = a
       end
-      Flag.new country, **attributes
+      Flag.new country, attributes
     end
   end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
