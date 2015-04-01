@@ -7,7 +7,7 @@ class Point < Clustering::Node
   end
 
   def distance other
-    self.cache_distance(other) do
+    super(other) do
       (self.x - other.x) ** 2 + (self.y - other.y) ** 2
     end
   end

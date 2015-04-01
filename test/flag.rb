@@ -5,8 +5,8 @@ require 'medjool'
 class Flag < Clustering::Node  
 
   Attributes = [
-    [:bars, 0.5],
-    [:stripes, 0.5],
+    [:bars, 0.25],
+    [:stripes, 0.25],
     [:colours, 1],
     [:red, 1],
     [:green, 1],
@@ -15,19 +15,19 @@ class Flag < Clustering::Node
     [:white, 1],
     [:black, 1],
     [:orange, 1],
-    [:mainhue, 1],
-    [:circles, 0.5],
-    [:crosses, 0.5],
-    [:saltires, 1],
+    [:mainhue, 5],
+    [:circles, 0.25],
+    [:crosses, 0.25],
+    [:saltires, 0.25],
     [:quarters, 1],
     [:sunstars, 0.5],
-    [:crescent, 0.5],
+    [:crescent, 1],
     [:triangle, 1],
     [:icon, 0.5],
     [:animate, 0.5],
     [:text, 1],
-    [:topleft, 1],
-    [:botright, 1]
+    [:topleft, 2],
+    [:botright, 2]
   ]
 
   # A hash of attributes
@@ -39,7 +39,7 @@ class Flag < Clustering::Node
   end
 
   def distance other
-    self.cache_distance(other) do
+    super(other) do
       Attributes.reduce(0) do |m, (a, v)|
         selfA = @attributes[a]
         otherA = other.attributes[a]

@@ -28,12 +28,8 @@ module Clustering
     def inspect
       @name
     end
-
-    def distance other
-      raise NotImplementedError.new
-    end
     
-    def cache_distance other
+    def distance other
       c = @cache[other]
       if c
         c

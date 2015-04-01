@@ -14,10 +14,7 @@ class TestFlagCluster < MiniTest::Unit::TestCase
 
   def test_10_clusters
     @algorithm = SingleLinkage::Algorithm.new 10, @flags
-    @algorithm.run do |clusters|
-        puts clusters.to_s
-        puts '--------------------------------------------------------------------------------'
-    end
+    puts @algorithm.run
   end
 
 end
