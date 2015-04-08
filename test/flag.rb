@@ -30,6 +30,11 @@ class Flag < Clustering::Node
     [:botright, 2]
   ]
 
+  NumericShapes = [:bars, :stripes, :colours, :circles, :crosses, :saltires, :quarters, :sunstars]
+  BinaryColors = [:red, :green, :blue, :gold, :white, :black, :orange]
+  BinaryShapes = [:crescent, :triangle, :icon, :animate, :text]
+  TextColors = [:mainhue, :topleft, :botright]
+
   # A hash of attributes
   attr_reader :attributes
 

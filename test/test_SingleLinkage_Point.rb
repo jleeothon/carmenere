@@ -14,7 +14,7 @@ require 'point'
 # 1a
 #  1 2 3 4 5 6 7 8
 
-class TestJoin < MiniTest::Unit::TestCase
+class TestSingleLinkageWithPoint < MiniTest::Unit::TestCase
 
   def setup
     @nodes = [

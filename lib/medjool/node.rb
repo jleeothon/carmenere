@@ -1,5 +1,6 @@
 module Clustering
 
+  # Represents any node that can be used regardless of algorithm or cluster.
   class Node
 
     include Comparable
