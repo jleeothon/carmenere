@@ -6,7 +6,7 @@ require 'point'
 def point_mean cluster
     x = cluster.reduce(0) { |m, p| m + p.x }.fdiv(cluster.count)
     y = cluster.reduce(0) { |m, p| m + p.y }.fdiv(cluster.count)
-    Point.new "(#{x}, #{y})", x, y
+    Point.new "(#{x.round(2)}, #{y.round(2)})", x, y
 end
 
 class TestCluster < MiniTest::Unit::TestCase
@@ -25,11 +25,21 @@ class TestCluster < MiniTest::Unit::TestCase
         Point.new(:'28', 1.5, 5), Point.new(:'29', 1.5, 2), Point.new(:'30', 4.5, 2.5)
     ]
     @centroids = [Point.new(:a, 1, 2), Point.new(:b, 7, 7)]
-    @algorithm = KMeans::Algorithm.new(@centroids, @nodes, &Proc.new{ |cluster| point_mean(cluster) })
+    @algorithm = Medjool::KMeans::Algorithm.new(@centroids, @nodes) do |cluster|
+        point_mean(cluster)
+    end
   end
 
-  def test_cluster_distance
+  def test_run
     puts @algorithm.run
+  end
+
+  def test_step
+    puts "--------------------------"
+    @algorithm.run do |s|
+        puts s
+        puts "--------"
+    end
   end
 
 end

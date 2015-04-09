@@ -1,6 +1,6 @@
 require 'set'
 
-module Clustering
+module Medjool
 
   class Cluster < Set
 

@@ -1,4 +1,4 @@
-module Clustering
+module Medjool
 
   class Algorithm
 

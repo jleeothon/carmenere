@@ -1,6 +1,6 @@
-module KMeans
+module Medjool::KMeans
 
-  class Cluster < Clustering::Cluster
+  class Cluster < Medjool::Cluster
   end
 
 end

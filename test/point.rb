@@ -1,6 +1,6 @@
 require 'medjool'
 
-class Point < Clustering::Node
+class Point < Medjool::Node
 
   def initialize name, x, y
     super name, {:x => x, :y => y}

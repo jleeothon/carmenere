@@ -1,6 +1,6 @@
-module SingleLinkage
+module Medjool::SingleLinkage
 
-  class Algorithm < Clustering::Algorithm
+  class Algorithm < Medjool::Algorithm
 
     attr_reader :nodes
 

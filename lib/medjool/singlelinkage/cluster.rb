@@ -1,6 +1,6 @@
-module SingleLinkage
+module Medjool::SingleLinkage
 
-  class Cluster < Clustering::Cluster
+  class Cluster < Medjool::Cluster
 
     # Minimum distance to other cluster
     def distance other

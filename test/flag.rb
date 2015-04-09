@@ -2,7 +2,7 @@ require 'json'
 
 require 'medjool'
 
-class Flag < Clustering::Node  
+class Flag < Medjool::Node  
 
   Attributes = [
     [:bars, 0.25],
