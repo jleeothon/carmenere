@@ -5,6 +5,13 @@ require 'medjool'
 class Flag < Medjool::Node  
 
   Attributes = [
+    [:name, 0],
+    [:landmass, 1],
+    [:zone, 1],
+    [:area, 1],
+    [:population, 1],
+    [:language, 1],
+    [:religion, 1],
     [:bars, 0.25],
     [:stripes, 0.25],
     [:colours, 1],
@@ -68,6 +75,18 @@ class Flag < Medjool::Node
         h[k] = a
       end
       Flag.new country, attributes
+    end
+  end
+
+  def self.yamlfy filename
+    json = JSON::load File::open(filename)
+    json.each do |f|
+      puts "--one"
+      i = 0
+      f.each do |a|
+        puts "  #{Attributes[i][0]}: #{a}"
+        i += 1
+      end
     end
   end
 

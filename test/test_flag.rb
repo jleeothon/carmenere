@@ -4,10 +4,14 @@ require 'medjool'
 
 require 'flag'
 
-class TestFlag < MiniTest::Unit::TestCase
+class TestFlag < Minitest::Test
 
   def setup
     @flags = Flag::load 'test/flag.json'
+  end
+
+  def test_flag_yamlfy
+    Flag::yamlfy 'test/flag.json'
   end
 
   def test_country_name
