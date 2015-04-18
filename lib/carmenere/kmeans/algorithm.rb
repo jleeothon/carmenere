@@ -1,10 +1,10 @@
 require 'set'
 
-module Medjool::KMeans
+module Carmenere::KMeans
 
   def self.centroids_eql? old_centroids, new_centroids
     [old_centroids, new_centroids].each do |i|
-      unless i.is_a?(Set) and i.all?{ |j| j.is_a?(Medjool::Node) }
+      unless i.is_a?(Set) and i.all?{ |j| j.is_a?(Carmenere::Node) }
         raise TypeError.new("#{i.class} is not Set of Node")
       end
     end
@@ -15,7 +15,7 @@ module Medjool::KMeans
     end
   end
 
-  class Algorithm < Medjool::Algorithm
+  class Algorithm < Carmenere::Algorithm
 
     attr_reader :centroids
 
@@ -29,7 +29,7 @@ module Medjool::KMeans
       old_centroids = Set.new
       centroids = Set.new @centroids
       centroid_clusters = {nil => nil}
-      until Medjool::KMeans::centroids_eql? old_centroids, centroids
+      until Carmenere::KMeans::centroids_eql? old_centroids, centroids
         old_centroids = centroids
         node_centroids = @nodes.each.with_object({}) do |node, h|
           h[node] = centroids.min_by do |c|
@@ -42,7 +42,7 @@ module Medjool::KMeans
           end.map do |n, c|
             n
           end
-          h[centroid] = Medjool::KMeans::Cluster.new nodes
+          h[centroid] = Carmenere::KMeans::Cluster.new nodes
         end
         yield centroid_clusters if block_given?
         centroids = Set.new centroid_clusters.values.map do |cluster|

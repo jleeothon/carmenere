@@ -1,6 +1,6 @@
-require 'medjool'
+require 'carmenere'
 
-class Point < Medjool::Node
+class Point < Carmenere::Node
 
   def initialize name, x, y
     super name, {:x => x, :y => y}

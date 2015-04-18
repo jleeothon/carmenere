@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-require 'medjool'
+require 'carmenere'
 
 require 'flag'
 
@@ -13,7 +13,7 @@ class TestFlagCluster < MiniTest::Unit::TestCase
   end
 
   def test_10_clusters
-    @algorithm = Medjool::SingleLinkage::Algorithm.new 10, @flags
+    @algorithm = Carmenere::SingleLinkage::Algorithm.new 10, @flags
     puts @algorithm.run
   end
 

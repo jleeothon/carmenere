@@ -1,6 +1,8 @@
-module Medjool::SingleLinkage
+require 'set'
 
-  class Cluster < Medjool::Cluster
+module Carmenere
+
+  class Cluster < Set
 
     # Minimum distance to other cluster
     def distance other
@@ -23,11 +25,6 @@ module Medjool::SingleLinkage
       self.to_s
     end
 
-    def run
-      raise NotImplementedError.new
-    end
-
   end
 
 end
-

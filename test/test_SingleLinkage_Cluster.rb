@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-require 'medjool'
+require 'carmenere'
 
 require 'point'
 
@@ -15,8 +15,8 @@ class TestCluster < MiniTest::Unit::TestCase
       Point.new(:e, 5, 6),
       Point.new(:f, 8, 8)
     ]
-    @cluster1 = Medjool::SingleLinkage::Cluster.new @nodes.slice(0..2)
-    @cluster2 = Medjool::SingleLinkage::Cluster.new @nodes.slice(3..5)
+    @cluster1 = Carmenere::SingleLinkage::Cluster.new @nodes.slice(0..2)
+    @cluster2 = Carmenere::SingleLinkage::Cluster.new @nodes.slice(3..5)
   end
 
   def test_cluster_distance

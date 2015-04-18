@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 
-require 'medjool'
+require 'carmenere'
 
 require 'point'
 
@@ -25,7 +25,7 @@ class TestSingleLinkageWithPoint < MiniTest::Unit::TestCase
       Point.new(:e, 5, 6),
       Point.new(:f, 8, 8)
     ]
-    @algorithm = Medjool::SingleLinkage::Algorithm.new 2, @nodes
+    @algorithm = Carmenere::SingleLinkage::Algorithm.new 2, @nodes
   end
 
   # def test_matrix_no_recursive

@@ -1,4 +1,4 @@
-module Medjool
+module Carmenere
 
   class Algorithm
 

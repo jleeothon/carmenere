@@ -1,0 +1,7 @@
+require 'carmenere/algorithm'
+require 'carmenere/cluster'
+require 'carmenere/node'
+require 'carmenere/kmeans/algorithm'
+require 'carmenere/kmeans/cluster'
+require 'carmenere/singlelinkage/algorithm'
+require 'carmenere/singlelinkage/cluster'

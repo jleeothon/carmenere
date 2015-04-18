@@ -4,7 +4,7 @@ require 'rake'
 
 task :help do
     puts "Usage"
-    puts "  console          starts a console loaded with medjool"
+    puts "  console          starts a console loaded with carmenere"
     puts "  help             shows this help text"
     puts "  run[<filename>]  runs <pattern>"
     puts "  test[<pattern>]  runs test/test_<pattern>.rb"
@@ -14,7 +14,7 @@ end
 task :default => [:tests]
 
 task :console do
-    sh "irb -I lib -r medjool.rb"
+    sh "irb -I lib -r carmenere.rb"
 end
 
 task :tests do

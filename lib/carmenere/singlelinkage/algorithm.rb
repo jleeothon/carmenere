@@ -1,6 +1,6 @@
-module Medjool::SingleLinkage
+module Carmenere::SingleLinkage
 
-  class Algorithm < Medjool::Algorithm
+  class Algorithm < Carmenere::Algorithm
 
     attr_reader :nodes
 

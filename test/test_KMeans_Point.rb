@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'medjool'
+require 'carmenere'
 require 'point'
 
 
@@ -25,7 +25,7 @@ class TestCluster < MiniTest::Unit::TestCase
         Point.new(:'28', 1.5, 5), Point.new(:'29', 1.5, 2), Point.new(:'30', 4.5, 2.5)
     ]
     @centroids = [Point.new(:a, 1, 2), Point.new(:b, 7, 7)]
-    @algorithm = Medjool::KMeans::Algorithm.new(@centroids, @nodes) do |cluster|
+    @algorithm = Carmenere::KMeans::Algorithm.new(@centroids, @nodes) do |cluster|
         point_mean(cluster)
     end
   end

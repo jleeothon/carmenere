@@ -1,4 +1,4 @@
-module Medjool
+module Carmenere
 
   # Represents any node that can be used regardless of algorithm or cluster.
   # The nodes attributes, problem domain-specific, are stored in
