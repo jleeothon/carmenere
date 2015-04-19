@@ -4,8 +4,12 @@ module Carmenere::KMeans
 
   def self.centroids_eql? old_centroids, new_centroids
     [old_centroids, new_centroids].each do |i|
-      unless i.is_a?(Set) and i.all?{ |j| j.is_a?(Carmenere::Node) }
+      unless i.is_a?(Set)
         raise TypeError.new("#{i.class} is not Set of Node")
+      end
+      unless i.all?{ |j| j.is_a?(Carmenere::Node) }
+        types = i.map{|j| j.class}
+        raise TypeError.new("Elements of Cluster are of types #{types}")
       end
     end
     old_centroids.count == new_centroids.count and old_centroids.all? do |i|
@@ -45,9 +49,12 @@ module Carmenere::KMeans
           h[centroid] = Carmenere::KMeans::Cluster.new nodes
         end
         yield centroid_clusters if block_given?
-        centroids = Set.new centroid_clusters.values.map do |cluster|
+        centroids = centroid_clusters.values.reject do |cluster|
+          cluster.empty?
+        end.map do |cluster|
           @mean.call(cluster)
         end
+        centroids = Set.new centroids
       end
       centroid_clusters
     end

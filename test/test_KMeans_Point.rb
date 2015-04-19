@@ -31,14 +31,11 @@ class TestCluster < MiniTest::Unit::TestCase
   end
 
   def test_run
-    puts @algorithm.run
+    @algorithm.run
   end
 
   def test_step
-    puts "--------------------------"
     @algorithm.run do |s|
-        puts s
-        puts "--------"
     end
   end
 

@@ -34,9 +34,9 @@ class Flag < Carmenere::Node
       Attributes.reduce(0) do |m, (a, v)|
         selfA = @attributes[a]
         otherA = other.attributes[a]
-        m + if selfA.is_a? String
+        m + if selfA.is_a?(String) and otherA.is_a?(String)
           if selfA == otherA then 0 else v end
-        elsif selfA.is_a? Fixnum
+        elsif selfA.is_a? Fixnum and otherA.is_a?(Fixnum)
           (selfA - otherA).abs * v
         else
           0
@@ -49,7 +49,7 @@ class Flag < Carmenere::Node
     json = JSON::load File::open(filename)
     json.map do |line|
       country = line.shift
-      attributes = line.each.with_index.with_object({}) do |(a, i), h|
+      attributes = line.slice(0..-1).each.with_index.with_object({}) do |(a, i), h|
         k = Attributes[i + 1][0]
         h[k] = a
       end
