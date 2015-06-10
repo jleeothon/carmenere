@@ -25,7 +25,7 @@ def flag_mean cluster
     frequencies = cluster.each.with_object(Hash.new 0) do |f, b|
       b[f.attributes[a]] += 1
     end
-    attributes[a] = frequencies.max_by{ |k, v| v }
+    attributes[a] = frequencies.max_by(attributes.count){ |k, v| v }.sort[0]
   end
   Flag.new :c, attributes
 end

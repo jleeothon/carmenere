@@ -26,7 +26,6 @@ class Flag < Carmenere::Node
 
   def initialize country, attributes
     super country, attributes
-    @cache = Hash.new
   end
 
   def distance other
